@@ -47,7 +47,9 @@ namespace CostMatrix.Web.Bootstrap
 
             Mapper.CreateMap<MatrixSectionItem, Matrix.Section.Item>();
 
-            Mapper.CreateMap<Matrix, MatrixViewModel>();
+            Mapper.CreateMap<Matrix, MatrixViewModel>()
+                .ForMember(d => d.CreatedBy, o => o.MapFrom(s => s.CreatedBy.Replace("2020DIGITAL\\", string.Empty)))
+                .ForMember(d => d.CreatedOn, o => o.MapFrom(s => s.CreatedOn.ToLocalTime().ToString()));
 
             Mapper.CreateMap<Matrix, MatrixEditModel>()
                 .ForMember(d => d.MatrixId, o => o.MapFrom(s => s.Id.ToString()))
@@ -64,7 +66,9 @@ namespace CostMatrix.Web.Bootstrap
                 .ForMember(d => d.OtherTotal, o => o.Ignore())
                 .ForMember(d => d.TestingTotal, o => o.Ignore())
                 .ForMember(d => d.ProjectManagementTotal, o => o.Ignore())
-                .ForMember(d => d.Total, o => o.Ignore());
+                .ForMember(d => d.Total, o => o.Ignore())
+                .ForMember(d => d.CreatedBy, o => o.MapFrom(s => s.CreatedBy.Replace("2020DIGITAL\\", string.Empty)))
+                .ForMember(d => d.CreatedOn, o => o.MapFrom(s => s.CreatedOn.ToLocalTime().ToString()));
 
             Mapper.CreateMap<Matrix.Section, MatrixSection>()
                 .ForMember(d => d.FrontEndTotal, o => o.Ignore())

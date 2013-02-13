@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using System;
+using MongoDB.Bson;
 using System.Collections.Generic;
 
 namespace CostMatrix.Core.Domain
@@ -10,6 +11,8 @@ namespace CostMatrix.Core.Domain
         public string Name { get; set; }
         public Setting Settings { get; set; }
         public IEnumerable<Section> Sections { get; set; }
+        public string CreatedBy { get; set; }
+        public DateTime CreatedOn { get; set; }
 
         public class Section
         {

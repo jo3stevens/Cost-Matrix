@@ -33,6 +33,9 @@ namespace CostMatrix.Web.Models
         public decimal ProjectManagementTotal { get; set; }
 
         public decimal Total { get; set; }
+
+        public string CreatedBy { get; set; }
+        public string CreatedOn { get; set; }
     }
 
     public class MatrixSection

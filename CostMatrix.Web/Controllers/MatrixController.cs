@@ -60,6 +60,9 @@ namespace CostMatrix.Web.Controllers
                 }
 
                 var domain = Mapper.Map<Matrix>(viewModel);
+                domain.CreatedBy = User.Identity.Name;
+                domain.CreatedOn = DateTime.UtcNow;
+
                 var id = _matrixService.Add(domain);
                 TempData.Add("SuccessMessage", "The new matrix was created successfully");
                 return RedirectToAction("Edit", "Matrix", new {id = id});
@@ -237,6 +240,9 @@ namespace CostMatrix.Web.Controllers
 
             viewModel.Sections.ForEach(s => viewModel.Total += s.Total);
 
+            csv.AppendLine("Created By," + viewModel.CreatedBy);
+            csv.AppendLine("Created On," + viewModel.CreatedOn);
+            csv.AppendLine();
             csv.AppendLine(",Description,Front End,Back End,Design,Art Director,Server Management,SEO,Copyrighter,Other,Testing,Project Management,Total");
 
             foreach (var section in viewModel.Sections)

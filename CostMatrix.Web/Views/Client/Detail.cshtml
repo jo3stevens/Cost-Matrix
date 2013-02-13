@@ -70,15 +70,35 @@
                             <div id="collapse-@project.Id" class="collapse">
                                 <div class="accordion-inner">
                                     <h5>Cost Matrixes</h5>
-                                    <ul>
-                                        @foreach (var matrix in project.Matrixes)
-                                        {
-                                            <li>
-                                                @Html.ActionLink(@matrix.Name, "Edit", "Matrix", new { id = matrix.Id }, null)
-                                                <a title="Export CSV" href="@Url.Action("Csv", "Matrix", new { id = matrix.Id })"><i class="icon-file"></i></a>
-                                            </li>
-                                        }
-                                    </ul>
+                                    
+                                    <table class="table">
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Created By</th>
+                                            <th>Created On</th>
+                                            <th></th>
+                                        </tr>
+                                        <tbody>
+                                            @foreach (var matrix in project.Matrixes)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @Html.DisplayFor(m => matrix.Name)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(m => matrix.CreatedBy)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(m => matrix.CreatedOn)
+                                                    </td>
+                                                    <td>
+                                                        <a title="Edit" href="@Url.Action("Edit", "Matrix", new { id = matrix.Id })"><i class="icon-edit"></i></a>
+                                                        <a title="Export CSV" href="@Url.Action("Csv", "Matrix", new { id = matrix.Id })"><i class="icon-file"></i></a>    
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </td>
