@@ -73,7 +73,10 @@
                                     <ul>
                                         @foreach (var matrix in project.Matrixes)
                                         {
-                                            <li>@Html.ActionLink(@matrix.Name, "Edit", "Matrix", new { id = matrix.Id }, null)</li>
+                                            <li>
+                                                @Html.ActionLink(@matrix.Name, "Edit", "Matrix", new { id = matrix.Id }, null)
+                                                <a title="Export CSV" href="@Url.Action("Csv", "Matrix", new { id = matrix.Id })"><i class="icon-file"></i></a>
+                                            </li>
                                         }
                                     </ul>
                                 </div>
