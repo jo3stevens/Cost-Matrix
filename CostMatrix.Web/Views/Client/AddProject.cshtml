@@ -1,0 +1,45 @@
+﻿@using CostMatrix.Web.Extensions
+@model CostMatrix.Web.Models.ProjectEditModel
+
+@{
+    ViewBag.Title = "Add Project";
+}
+
+<div class="span3">
+    <div class="well sidebar-nav">
+        <ul class="nav nav-list">
+            <li class="nav-header">Actions</li>
+             @Html.MenuLink("List Clients", "Index", "Client")
+             @Html.MenuLink("Add Client", "Add", "Client")
+        </ul>
+    </div><!--/.well -->
+</div><!--/span-->
+
+
+<div class="span9">
+    <h3>Add Project</h3>
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { @class="form-horizontal" }))
+    {
+        @Html.HiddenFor(m => m.ClientId)
+        
+        <div class="control-group">
+            @Html.LabelFor(m => m.ClientName, new { @class="control-label" })
+            <div class="controls">
+                @Html.DisplayFor(m => m.ClientName)
+            </div>
+        </div>
+        
+        <div class="control-group">
+            @Html.LabelFor(m => m.Name, new { @class="control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(m => m.Name)
+                @Html.ValidationMessageFor(m  => m.Name, null, new { @class="help-inline" })
+            </div>
+        </div>
+            
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Create Project</button>
+            @Html.ActionLink("Cancel", "Detail", "Client", new { id = Model.ClientId }, new { @class = "btn" })
+        </div>
+    }
+</div><!--/span-->

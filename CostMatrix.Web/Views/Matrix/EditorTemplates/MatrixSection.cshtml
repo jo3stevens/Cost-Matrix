@@ -1,0 +1,70 @@
+﻿@using CostMatrix.Web.Extensions
+@model CostMatrix.Web.Models.MatrixSection
+
+<div class="section">
+    @using (Html.BeginCollectionItem("Sections"))
+    {
+        @Html.HiddenFor(m => m.Name)
+        
+        <div class="handle">
+            <h4><a href="#container-@Model.UniqueId" data-toggle="collapse">@Model.Name</a></h4>
+        </div>
+
+        <div id="container-@Model.UniqueId" class="collapse in">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Front End</th>
+                        <th>Back End</th>
+                        <th>Design</th>
+                        <th>Other</th>
+                        <th>Testing</th>
+                        <th>PM</th>
+                        <th>Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @Html.EditorFor(m => m.Items)                    
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Total Hours</th>
+                        <td>
+                            <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.FrontEndTotal)</span>
+                        </td>
+                        <td>
+                            <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.BackEndTotal)</span>
+                        </td>
+                        <td>
+                            <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.DesignTotal)</span>
+                        </td>
+                        <td>
+                            <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.OtherTotal)</span>
+                        </td>
+                        <td>
+                            <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.TestingTotal)</span>
+                        </td>
+                        <td>
+                            <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.ProjectManagementTotal)</span>
+                        </td>
+                        <td>
+                            <div class="input-prepend">
+                                <span class="add-on">$</span>
+                                <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.Total)</span>
+                            </div>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="15">
+                            <a id="add-item" data-container-prefix="@ViewData["ContainerPrefix"]" href="javascript:void()" class="btn">Add Item</a>
+                            <a href="javascript:void()" class="btn remove-section">Remove Section</a>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>   
+    }
+</div>

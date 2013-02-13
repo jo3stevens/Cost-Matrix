@@ -1,0 +1,148 @@
+﻿@model CostMatrix.Web.Models.SettingEditModel
+
+@{
+    ViewBag.Title = "Settings";
+}
+
+<div class="span9">
+    <h3>Default Settings</h3>
+    
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { @class="form-horizontal" }))
+    {
+        <div class="control-group">
+            @Html.LabelFor(m => m.FrontEnd, new { @class="control-label" })
+            <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on">$</span>
+                    @Html.TextBoxFor(m => m.FrontEnd)
+                </div>
+                @Html.ValidationMessageFor(m  => m.FrontEnd, null, new { @class="help-inline" })
+            </div>
+        </div>
+        
+        <div class="control-group">
+            @Html.LabelFor(m => m.BackEnd, new { @class="control-label" })
+            <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on">$</span>
+                    @Html.TextBoxFor(m => m.BackEnd)
+                </div>
+                @Html.ValidationMessageFor(m  => m.BackEnd , null, new { @class="help-inline" })
+            </div>
+        </div>
+        
+        <div class="control-group">
+            @Html.LabelFor(m => m.Design, new { @class="control-label" })
+            <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on">$</span>
+                    @Html.TextBoxFor(m => m.Design)
+                </div>
+                @Html.ValidationMessageFor(m  => m.Design, null, new { @class="help-inline" })
+            </div>
+        </div>
+        
+        <div class="control-group">
+            @Html.LabelFor(m => m.ArtDirector, new { @class="control-label" })
+            <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on">$</span>
+                    @Html.TextBoxFor(m => m.ArtDirector)
+                </div>
+                @Html.ValidationMessageFor(m  => m.ArtDirector, null, new { @class="help-inline" })
+            </div>
+        </div>
+        
+        <div class="control-group">
+            @Html.LabelFor(m => m.Producer, new { @class="control-label" })
+            <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on">$</span>
+                    @Html.TextBoxFor(m => m.Producer)
+                </div>
+                @Html.ValidationMessageFor(m  => m.Producer, null, new { @class="help-inline" })
+            </div>
+        </div>
+        
+        <div class="control-group">
+            @Html.LabelFor(m => m.AccountDirector, new { @class="control-label" })
+            <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on">$</span>
+                    @Html.TextBoxFor(m => m.AccountDirector)
+                </div>
+                @Html.ValidationMessageFor(m  => m.AccountDirector, null, new { @class="help-inline" })
+            </div>
+        </div>
+        
+        <div class="control-group">
+            @Html.LabelFor(m => m.ServerManagement, new { @class="control-label" })
+            <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on">$</span>
+                    @Html.TextBoxFor(m => m.ServerManagement)
+                </div>
+                @Html.ValidationMessageFor(m  => m.ServerManagement, null, new { @class="help-inline" })
+            </div>
+        </div>
+        
+        <div class="control-group">
+            @Html.LabelFor(m => m.Seo, new { @class="control-label" })
+            <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on">$</span>
+                    @Html.TextBoxFor(m => m.Seo)
+                </div>
+                @Html.ValidationMessageFor(m  => m.Seo, null, new { @class="help-inline" })
+            </div>
+        </div>
+        
+        <div class="control-group">
+            @Html.LabelFor(m => m.Copyrighter, new { @class="control-label" })
+            <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on">$</span>
+                    @Html.TextBoxFor(m => m.Copyrighter)
+                </div>
+                @Html.ValidationMessageFor(m  => m.Copyrighter, null, new { @class="help-inline" })
+            </div>
+        </div>
+        
+        <div class="control-group">
+            @Html.LabelFor(m => m.Testing, new { @class="control-label" })
+            <div class="controls">
+                <div class="input-append">
+                    @Html.TextBoxFor(m => m.Testing)
+                    <span class="add-on">%</span>
+                </div>
+                @Html.ValidationMessageFor(m  => m.Testing, null, new { @class="help-inline" })
+            </div>
+        </div>
+        
+        <div class="control-group">
+            @Html.LabelFor(m => m.ProjectManagement, new { @class="control-label" })
+            <div class="controls">
+                <div class="input-append">
+                    @Html.TextBoxFor(m => m.ProjectManagement)
+                    <span class="add-on">%</span>
+                </div>
+                @Html.ValidationMessageFor(m  => m.ProjectManagement, null, new { @class="help-inline" })
+            </div>
+        </div>
+        
+        <div class="control-group">
+            @Html.LabelFor(m => m.Other, new { @class="control-label" })
+            <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on">$</span>
+                    @Html.TextBoxFor(m => m.Other)
+                </div>
+                @Html.ValidationMessageFor(m  => m.Other, null, new { @class="help-inline" })
+            </div>
+        </div>
+            
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save Settings</button>
+        </div>
+    }
+</div>

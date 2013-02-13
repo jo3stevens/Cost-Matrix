@@ -1,0 +1,115 @@
+﻿@using CostMatrix.Web.Extensions
+@model CostMatrix.Web.Models.MatrixSectionItem
+
+@using (Html.BeginCollectionItem("Items", "<tr style='display:none;'><td>{0}</td></tr>"))
+{
+    <tr>
+        <td>
+            <div class="control-group" style="margin: 0;">
+                @Html.TextBoxFor(m => m.Description, new { @class = "input-large" })
+            </div>
+        </td>
+        <td>
+            <div class="control-group" style="margin: 0;">
+                @Html.TextBoxFor(m => m.FrontEnd, new { @class = "input-mini" })
+            </div>
+        </td>
+        <td>
+            <div class="control-group" style="margin: 0;">
+                @Html.TextBoxFor(m => m.BackEnd, new { @class = "input-mini" })
+            </div>
+        </td>
+        <td>
+            <div class="control-group" style="margin: 0;">
+                @Html.TextBoxFor(m => m.Design, new { @class = "input-mini" })
+            </div>
+        </td>
+        <td>
+            <div class="control-group" style="margin: 0;">
+                @Html.TextBoxFor(m => m.Other, new { @class = "input-mini" })
+            </div>
+        </td>
+        <td>
+            <div class="control-group" style="margin: 0;">
+                <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.Testing)</span>
+            </div>
+        </td>
+        <td>
+            <div class="control-group" style="margin: 0;">
+                <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.ProjectManagement)</span>
+            </div>
+        </td>
+        <td>
+            <div class="control-group" style="margin: 0;">
+                <div class="input-prepend">
+                    <span class="add-on">$</span>
+                    <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.Total)</span>
+                </div>
+            </div>
+        </td>
+        <td>
+            <a href="#more-modal-@Model.UniqueId" data-toggle="modal" class="btn @(Model.HasMore ? "btn-success" : string.Empty )">More</a>
+            <a title="Remove" class="remove-item" href="javascript:void()" ><i class="icon-remove"></i></a>
+            
+            <div id="more-modal-@Model.UniqueId" class="modal hide fade">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3>Additional Resources</h3>
+                </div>
+        
+                <div class="modal-body form-horizontal">        
+                    <div class="control-group">
+                        @Html.LabelFor(m => m.ArtDirector, new { @class = "control-label" })
+                        <div class="controls">
+                            @Html.TextBoxFor(m => m.ArtDirector)
+                            @Html.ValidationMessageFor(m => m.ArtDirector, "", new { @class = "help-inline" })
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        @Html.LabelFor(m => m.Producer, new { @class = "control-label" })
+                        <div class="controls">
+                            @Html.TextBoxFor(m => m.Producer)
+                            @Html.ValidationMessageFor(m => m.Producer, "", new { @class = "help-inline" })
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        @Html.LabelFor(m => m.AccountDirector, new { @class = "control-label" })
+                        <div class="controls">
+                            @Html.TextBoxFor(m => m.AccountDirector)
+                            @Html.ValidationMessageFor(m => m.AccountDirector, "", new { @class = "help-inline" })
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        @Html.LabelFor(m => m.ServerManagement, new { @class = "control-label" })
+                        <div class="controls">
+                            @Html.TextBoxFor(m => m.ServerManagement)
+                            @Html.ValidationMessageFor(m => m.ServerManagement, "", new { @class = "help-inline" })
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        @Html.LabelFor(m => m.Seo, new { @class = "control-label" })
+                        <div class="controls">
+                            @Html.TextBoxFor(m => m.Seo)
+                            @Html.ValidationMessageFor(m => m.Seo, "", new { @class = "help-inline" })
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        @Html.LabelFor(m => m.Copyrighter, new { @class = "control-label" })
+                        <div class="controls">
+                            @Html.TextBoxFor(m => m.Copyrighter)
+                            @Html.ValidationMessageFor(m => m.Copyrighter, "", new { @class = "help-inline" })
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn" data-dismiss="modal">Close</a>
+                </div>
+            </div>
+        </td>
+    </tr>
+}

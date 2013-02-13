@@ -1,0 +1,371 @@
+﻿@model CostMatrix.Web.Models.MatrixEditModel
+
+@{
+    ViewBag.Title = "Edit Matrix";
+}
+
+<div class="span12">
+    <h3>Add Matrix</h3>
+    <h4>@Model.ClientName</h4>
+    
+    @using (Html.BeginForm(null, null, FormMethod.Post))
+    {
+        @Html.HiddenFor(m => m.ProjectId)
+        @Html.HiddenFor(m => m.MatrixId)
+
+        <div class="row">
+            <div class="span4">
+                <fieldset>
+                    <legend>Matrix Details</legend>
+                    <div class="control-group">
+                        @Html.TextBoxFor(m => m.Name, new { @placeholder = "Matrix Name" })
+                    </div>
+                </fieldset>
+            </div>
+            <div class="span4">
+                <fieldset>
+                    <legend>Sections</legend>
+                    <div class="input-append">
+                        <input class="span2" id="section-name" type="text">
+                        <button id="add-section" class="btn" type="button">Add Section</button>
+                        <div class="btn-group">
+                            <button class="btn dropdown-toggle" data-toggle="dropdown">
+                                Presets
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="section-preset" href="#">Project Analysis</a></li>
+                                <li><a class="section-preset" href="#">Visual Design</a></li>
+                                <li><a class="section-preset" href="#">Development Framework</a></li>
+                                <li><a class="section-preset" href="#">Project Requirements</a></li>
+                                <li><a class="section-preset" href="#">Analytics</a></li>
+                                <li><a class="section-preset" href="#">Deployment</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="span4">
+                <fieldset>
+                    <legend>Matrix Settings</legend>
+                    <a href="#setting-modal" data-toggle="modal" class="btn">Open Settings</a>
+                </fieldset>
+            </div>
+        </div>
+        
+        <div id="section-container">
+            @Html.EditorFor(m => m.Sections)
+        </div>
+        
+        <h4>Totals</h4>
+        
+        <table class="table table-bordered" style="margin-left: 0;">
+            <thead>
+                <tr>
+                    <th>Front End</th>
+                    <th>Back End</th>
+                    <th>Design</th>
+                    <th>Other</th>
+                    <th>Testing</th>
+                    <th>Project Management</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.FrontEndTotal)</span>
+                    </td>
+                    <td>
+                        <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.BackEndTotal)</span>
+                    </td>
+                    <td>
+                        <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.DesignTotal)</span>
+                    </td>
+                    <td>
+                        <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.OtherTotal)</span>
+                    </td>
+                    <td>
+                        <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.TestingTotal)</span>
+                    </td>
+                    <td>
+                        <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.ProjectManagementTotal)</span>
+                    </td>
+                    <td>
+                        <div class="input-prepend">
+                            <span class="add-on">$</span>
+                            <span class="uneditable-input span1">@Html.DisplayFor(m => m.Total)</span>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save Matrix</button>
+            @Html.ActionLink("Cancel", "Index", "Client", null, new { @class = "btn" })
+        </div>
+        
+        <div class="form-horizontal">
+            <div id="setting-modal" class="modal hide fade">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3>Settings</h3>
+                </div>
+        
+                <div class="modal-body">        
+                    <div class="control-group">
+                        @Html.LabelFor(m => m.Settings.FrontEnd, new { @class = "control-label" })
+                        <div class="controls">
+                            <div class="input-prepend">
+                                <span class="add-on">$</span>
+                                @Html.TextBoxFor(m => m.Settings.FrontEnd)
+                            </div>
+                            @Html.ValidationMessageFor(m => m.Settings.FrontEnd, "", new { @class = "help-inline" })
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        @Html.LabelFor(m => m.Settings.BackEnd, new { @class = "control-label" })
+                        <div class="controls">
+                            <div class="input-prepend">
+                                <span class="add-on">$</span>
+                                @Html.TextBoxFor(m => m.Settings.BackEnd)
+                            </div>
+                            @Html.ValidationMessageFor(m => m.Settings.BackEnd, "", new { @class = "help-inline" })
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        @Html.LabelFor(m => m.Settings.Design, new { @class = "control-label" })
+                        <div class="controls">
+                            <div class="input-prepend">
+                                <span class="add-on">$</span>
+                                @Html.TextBoxFor(m => m.Settings.Design)
+                            </div>
+                            @Html.ValidationMessageFor(m => m.Settings.Design, "", new { @class = "help-inline" })
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        @Html.LabelFor(m => m.Settings.ArtDirector, new { @class = "control-label" })
+                        <div class="controls">
+                            <div class="input-prepend">
+                                <span class="add-on">$</span>
+                                @Html.TextBoxFor(m => m.Settings.ArtDirector)
+                            </div>
+                            @Html.ValidationMessageFor(m => m.Settings.ArtDirector, "", new { @class = "help-inline" })
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        @Html.LabelFor(m => m.Settings.Producer, new { @class = "control-label" })
+                        <div class="controls">
+                            <div class="input-prepend">
+                                <span class="add-on">$</span>
+                                @Html.TextBoxFor(m => m.Settings.Producer)
+                            </div>
+                            @Html.ValidationMessageFor(m => m.Settings.Producer, "", new { @class = "help-inline" })
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        @Html.LabelFor(m => m.Settings.AccountDirector, new { @class = "control-label" })
+                        <div class="controls">
+                            <div class="input-prepend">
+                                <span class="add-on">$</span>
+                                @Html.TextBoxFor(m => m.Settings.AccountDirector)
+                            </div>
+                            @Html.ValidationMessageFor(m => m.Settings.AccountDirector, "", new { @class = "help-inline" })
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        @Html.LabelFor(m => m.Settings.ServerManagement, new { @class = "control-label" })
+                        <div class="controls">
+                            <div class="input-prepend">
+                                <span class="add-on">$</span>
+                                @Html.TextBoxFor(m => m.Settings.ServerManagement)
+                            </div>
+                            @Html.ValidationMessageFor(m => m.Settings.ServerManagement, "", new { @class = "help-inline" })
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        @Html.LabelFor(m => m.Settings.Seo, new { @class = "control-label" })
+                        <div class="controls">
+                            <div class="input-prepend">
+                                <span class="add-on">$</span>
+                                @Html.TextBoxFor(m => m.Settings.Seo)
+                            </div>
+                            @Html.ValidationMessageFor(m => m.Settings.Seo, "", new { @class = "help-inline" })
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        @Html.LabelFor(m => m.Settings.Copyrighter, new { @class = "control-label" })
+                        <div class="controls">
+                            <div class="input-prepend">
+                                <span class="add-on">$</span>
+                                @Html.TextBoxFor(m => m.Settings.Copyrighter)
+                            </div>
+                            @Html.ValidationMessageFor(m => m.Settings.Copyrighter, "", new { @class = "help-inline" })
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        @Html.LabelFor(m => m.Settings.Testing, new { @class = "control-label" })
+                        <div class="controls">
+                            <div class="input-append">
+                                @Html.TextBoxFor(m => m.Settings.Testing)
+                                <span class="add-on">%</span>
+                            </div>
+                            @Html.ValidationMessageFor(m => m.Settings.Testing, "", new { @class = "help-inline" })
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        @Html.LabelFor(m => m.Settings.ProjectManagement, new { @class = "control-label" })
+                        <div class="controls">
+                            <div class="input-append">
+                                @Html.TextBoxFor(m => m.Settings.ProjectManagement)
+                                <span class="add-on">%</span>
+                            </div>
+                            @Html.ValidationMessageFor(m => m.Settings.ProjectManagement, "", new { @class = "help-inline" })
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        @Html.LabelFor(m => m.Settings.Other, new { @class = "control-label" })
+                        <div class="controls">
+                            <div class="input-prepend">
+                                <span class="add-on">$</span>
+                                @Html.TextBoxFor(m => m.Settings.Other)
+                            </div>
+                            @Html.ValidationMessageFor(m => m.Settings.Other, "", new { @class = "help-inline" })
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn" data-dismiss="modal">Close</a>
+                </div>
+            </div>            
+        </div>
+
+    }
+    
+    <div id="section-error-modal" class="modal hide fade">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>Error</h3>
+        </div>
+        <div class="modal-body">
+            <p>Please enter a section name before adding a new section.</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#" data-dismiss="modal" class="btn">Close</a>
+        </div>
+    </div>
+    
+    <div id="remove-item-modal" class="modal hide fade">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>Remove Item</h3>
+        </div>
+        <div class="modal-body">
+            <p>Are you sure you want to remove this item from the Matrix?</p>
+        </div>
+        <div class="modal-footer">
+            <a id="remove-item" href="javascript:void()" class="btn btn-primary">Yes</a>
+            <a href="#" data-dismiss="modal" class="btn">No</a>
+        </div>
+    </div>
+    
+    <div id="remove-section-modal" class="modal hide fade">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>Remove Section</h3>
+        </div>
+        <div class="modal-body">
+            <p>Are you sure you want to remove this section from the Matrix?</p>
+        </div>
+        <div class="modal-footer">
+            <a id="remove-section" href="javascript:void()" class="btn btn-primary">Yes</a>
+            <a href="#" data-dismiss="modal" class="btn">No</a>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+        $().ready(function() {
+
+            $("#add-section").click(function() {
+                var sectionName = $("#section-name").val();
+                if (sectionName == "") {
+                    $('#section-error-modal').modal('show');
+                } else {
+                    $.ajax({
+                        url: "/Matrix/GetNewSection",
+                        data: { sectionName: sectionName },
+                        success: function(data) {
+                            $("#section-container").append(data);
+                            $("#section-name").val("");
+                        }
+                    });
+                }
+            });
+
+            $(document).on("click", "#add-item", function() {
+                var button = $(this);
+
+                $.ajax({
+                    url: "/Matrix/GetNewItem",
+                    data: { "containerPrefix": button.data("container-prefix") },
+                    success: function(data) {
+                        button.parents(".table").children("#item-container").append(data);
+                        button.parents(".table").children("tbody").children("tr").last().children("td").first().find("input").focus();
+                    }
+                });
+            });
+
+            $(".section-preset").click(function() {
+                $("#section-name").val($(this).html());
+            });
+
+            $("#settings-form").on("submit", function() {
+                if ($(this).validate().form()) {
+                    $('#setting-modal').modal('hide');
+                }
+
+                return false;
+            });
+
+            $(document).on("click", ".remove-item", function() {
+                var row = $(this).parents("tr");
+                $("#remove-item").click(function() {
+                    row.remove();
+                    $('#remove-item-modal').modal('hide');
+                });
+
+                $('#remove-item-modal').modal('show');
+            });
+
+            $(document).on("click", ".remove-section", function() {
+                var section = $(this).parents(".section");
+                $("#remove-section").click(function() {
+                    section.remove();
+                    $('#remove-section-modal').modal('hide');
+                });
+
+                $('#remove-section-modal').modal('show');
+            });
+
+            $("#section-container").sortable({
+                handle: '.handle',
+                cursor: 'move'
+            });
+        })
+    </script>
+}

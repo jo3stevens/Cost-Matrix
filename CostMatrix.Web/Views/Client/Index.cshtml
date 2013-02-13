@@ -1,0 +1,63 @@
+﻿@using CostMatrix.Web.Extensions
+@model IEnumerable<CostMatrix.Web.Models.ClientViewModel>
+
+@{
+    ViewBag.Title = "Clients";
+}
+
+<div class="span3">
+    <div class="well sidebar-nav">
+        <ul class="nav nav-list">
+            <li class="nav-header">Actions</li>
+            @Html.MenuLink("List Clients", "Index", "Client")
+            @Html.MenuLink("Add Client", "Add", "Client")
+        </ul>
+    </div><!--/.well -->
+</div><!--/span-->
+
+<div class="span9">
+    @if (!Model.Any())
+    {
+        <p>There are currently no clients</p>
+    }
+    else
+    {
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th class="span2">
+                        Created By
+                    </th>
+                    <th class="span3">
+                        Created On
+                    </th>
+                    <th class="span2"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var client in Model)
+                {
+                    <tr>
+                        <td>
+                            @client.Name
+                        </td>
+                        <td>
+                            @client.CreatedBy
+                        </td>
+                        <td>
+                            @client.CreatedOn
+                        </td>
+                        <td>
+                            <a title="Detail" href="@Url.Action("Detail", "Client", new { id = client.Id })"><i class="icon-eye-open"></i></a>
+                            <a title="Edit" href="@Url.Action("Edit", "Client", new { id = client.Id })"><i class="icon-edit"></i></a>
+                            <a title="Delete" href="@Url.Action("Delete", "Client", new { id = client.Id })"><i class="icon-remove"></i></a>
+                        </td>
+                    </tr>    
+                }
+            </tbody>
+        </table>        
+    }
+</div><!--/span-->

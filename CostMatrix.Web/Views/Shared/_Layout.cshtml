@@ -1,0 +1,59 @@
+﻿@using System.Web.Optimization
+@using CostMatrix.Web.Extensions
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - Cost Matrix</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    @Styles.Render("~/Content/css")
+
+</head>
+<body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Cost Matrix</a>
+          <div class="nav-collapse collapse">
+              <ul class="nav">
+                  @Html.MenuLink("Clients", "Index", "Client", true)
+                  @Html.MenuLink("Settings", "Index", "Setting", true)
+              </ul>
+              <p class="navbar-text pull-right">
+                  @User.Identity.Name
+              </p>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+    
+    <div class="container">
+        <div class="row">
+                @if (TempData.ContainsKey("SuccessMessage"))
+                {
+                    <div class="span12">
+                        <div class="alert alert-success">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            @TempData["SuccessMessage"]
+                        </div>
+                    </div>
+                }
+        </div>
+        <div class="row">
+            @RenderBody()
+        </div><!--/row-->
+    </div><!--/.fluid-container-->
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/custom")
+    @RenderSection("scripts", false)
+</body>
+</html>
