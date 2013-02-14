@@ -53,8 +53,7 @@ namespace CostMatrix.Web.Controllers
                             item.Testing = ((item.FrontEnd + item.BackEnd) / 100) * viewModel.Settings.Testing;
 
                             item.ProjectManagement = ((item.FrontEnd + item.BackEnd + item.Design + item.ArtDirector + item.Producer +
-                                             item.AccountDirector + item.ServerManagement + item.Seo + item.Copyrighter +
-                                             item.Other + item.Testing) / 100) * viewModel.Settings.ProjectManagement;
+                                             item.AccountDirector + item.ServerManagement + item.Seo + item.Copyrighter + item.Testing) / 100) * viewModel.Settings.ProjectManagement;
                         }
                     }
                 }
@@ -94,9 +93,9 @@ namespace CostMatrix.Web.Controllers
                                  + (item.ServerManagement * viewModel.Settings.ServerManagement)
                                  + (item.Seo * viewModel.Settings.Seo)
                                  + (item.Copyrighter * viewModel.Settings.Copyrighter)
-                                 + (item.Other * viewModel.Settings.Other)
                                  + (item.Testing * 175M) //TODO: Create a seperate value for testing and pm
-                                 + (item.ProjectManagement * 175M);
+                                 + (item.ProjectManagement * 175M)
+                                 + item.Other;
 
                     item.HasMore = item.ArtDirector > 0 || item.Producer > 0 || item.AccountDirector > 0 ||
                                    item.ServerManagement > 0 || item.Seo > 0 || item.Copyrighter > 0;
@@ -141,15 +140,21 @@ namespace CostMatrix.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                foreach (var section in viewModel.Sections)
+                if (viewModel.Sections != null)
                 {
-                    foreach (var item in section.Items)
+                    foreach (var section in viewModel.Sections)
                     {
-                        item.Testing = ((item.FrontEnd + item.BackEnd) / 100) * viewModel.Settings.Testing;
+                        foreach (var item in section.Items)
+                        {
+                            item.Testing = ((item.FrontEnd + item.BackEnd)/100)*viewModel.Settings.Testing;
 
-                        item.ProjectManagement = ((item.FrontEnd + item.BackEnd + item.Design + item.ArtDirector + item.Producer +
-                                         item.AccountDirector + item.ServerManagement + item.Seo + item.Copyrighter +
-                                         item.Other + item.Testing) / 100) * viewModel.Settings.ProjectManagement;
+                            item.ProjectManagement = ((item.FrontEnd + item.BackEnd + item.Design + item.ArtDirector +
+                                                       item.Producer +
+                                                       item.AccountDirector + item.ServerManagement + item.Seo +
+                                                       item.Copyrighter +
+                                                       item.Testing)/100)*
+                                                     viewModel.Settings.ProjectManagement;
+                        }
                     }
                 }
 
@@ -243,9 +248,9 @@ namespace CostMatrix.Web.Controllers
                                  + (item.ServerManagement * viewModel.Settings.ServerManagement)
                                  + (item.Seo * viewModel.Settings.Seo)
                                  + (item.Copyrighter * viewModel.Settings.Copyrighter)
-                                 + (item.Other * viewModel.Settings.Other)
                                  + (item.Testing * 175M) //TODO: Create a seperate value for testing and pm
-                                 + (item.ProjectManagement * 175M);
+                                 + (item.ProjectManagement * 175M)
+                                 + item.Other;
 
                     item.HasMore = item.ArtDirector > 0 || item.Producer > 0 || item.AccountDirector > 0 ||
                                    item.ServerManagement > 0 || item.Seo > 0 || item.Copyrighter > 0;

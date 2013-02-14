@@ -1,52 +1,55 @@
 ﻿@using CostMatrix.Web.Extensions
 @model CostMatrix.Web.Models.MatrixSectionItem
 
-@using (Html.BeginCollectionItem("Items", "<tr style='display:none;'><td>{0}</td></tr>"))
-{
-    <tr>
-        <td>
-            <div class="control-group" style="margin: 0;">
-                @Html.TextBoxFor(m => m.Description, new { @class = "input-large" })
-            </div>
-        </td>
-        <td>
-            <div class="control-group" style="margin: 0;">
-                @Html.TextBoxFor(m => m.FrontEnd, new { @class = "input-mini" })
-            </div>
-        </td>
-        <td>
-            <div class="control-group" style="margin: 0;">
-                @Html.TextBoxFor(m => m.BackEnd, new { @class = "input-mini" })
-            </div>
-        </td>
-        <td>
-            <div class="control-group" style="margin: 0;">
-                @Html.TextBoxFor(m => m.Design, new { @class = "input-mini" })
-            </div>
-        </td>
-        <td>
-            <div class="control-group" style="margin: 0;">
+<tr>
+    @using (Html.BeginCollectionItem("Items", "<td style='display:none'>{0}</td>"))
+    {
+    <td>
+        <div class="control-group" style="margin: 0;">
+            @Html.TextBoxFor(m => m.Description, new { @class = "input-large" })
+        </div>
+    </td>
+    <td>
+        <div class="control-group" style="margin: 0;">
+            @Html.TextBoxFor(m => m.FrontEnd, new { @class = "input-mini" })
+        </div>
+    </td>
+    <td>
+        <div class="control-group" style="margin: 0;">
+            @Html.TextBoxFor(m => m.BackEnd, new { @class = "input-mini" })
+        </div>
+    </td>
+    <td>
+        <div class="control-group" style="margin: 0;">
+            @Html.TextBoxFor(m => m.Design, new { @class = "input-mini" })
+        </div>
+    </td>
+    <td>
+        <div class="control-group" style="margin: 0;">
+            <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.Testing)</span>
+        </div>
+    </td>
+    <td>
+        <div class="control-group" style="margin: 0;">
+            <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.ProjectManagement)</span>
+        </div>
+    </td>
+    <td>
+        <div class="control-group" style="margin: 0;">
+            <div class="input-prepend">
+                <span class="add-on">$</span>
                 @Html.TextBoxFor(m => m.Other, new { @class = "input-mini" })
             </div>
-        </td>
-        <td>
-            <div class="control-group" style="margin: 0;">
-                <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.Testing)</span>
+        </div>
+    </td>
+    <td>
+        <div class="control-group" style="margin: 0;">
+            <div class="input-prepend">
+                <span class="add-on">$</span>
+                <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.Total)</span>
             </div>
-        </td>
-        <td>
-            <div class="control-group" style="margin: 0;">
-                <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.ProjectManagement)</span>
-            </div>
-        </td>
-        <td>
-            <div class="control-group" style="margin: 0;">
-                <div class="input-prepend">
-                    <span class="add-on">$</span>
-                    <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.Total)</span>
-                </div>
-            </div>
-        </td>
+        </div>
+    </td>
         <td>
             <a href="#more-modal-@Model.UniqueId" data-toggle="modal" class="btn @(Model.HasMore ? "btn-success" : string.Empty )">More</a>
             <a title="Remove" class="remove-item" href="javascript:void()" ><i class="icon-remove"></i></a>
@@ -111,5 +114,5 @@
                 </div>
             </div>
         </td>
-    </tr>
-}
+    }
+</tr>

@@ -16,6 +16,5 @@ namespace CostMatrix.Core.Domain
         public decimal Copyrighter { get; set; }
         public decimal Testing { get; set; }
         public decimal ProjectManagement { get; set; }
-        public decimal Other { get; set; }
     }
 }

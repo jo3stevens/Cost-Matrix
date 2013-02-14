@@ -18,9 +18,9 @@
                         <th>Front End</th>
                         <th>Back End</th>
                         <th>Design</th>
-                        <th>Other</th>
                         <th>Testing</th>
                         <th>PM</th>
+                        <th>Other</th>
                         <th>Total</th>
                         <th></th>
                     </tr>
@@ -41,13 +41,16 @@
                             <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.DesignTotal)</span>
                         </td>
                         <td>
-                            <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.OtherTotal)</span>
-                        </td>
-                        <td>
                             <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.TestingTotal)</span>
                         </td>
                         <td>
                             <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.ProjectManagementTotal)</span>
+                        </td>
+                        <td>
+                            <div class="input-prepend">
+                                <span class="add-on">$</span>
+                                <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.OtherTotal)</span>
+                            </div>
                         </td>
                         <td>
                             <div class="input-prepend">

@@ -54,9 +54,5 @@ namespace CostMatrix.Web.Models
         [Required]
         [RegularExpression(@"^\d+(\.\d{1,2})?$", ErrorMessage = "The {0} field is invalid.")]
         public decimal ProjectManagement { get; set; }
-
-        [Required]
-        [RegularExpression(@"^\d+(\.\d{1,2})?$", ErrorMessage = "The {0} field is invalid.")]
-        public decimal Other { get; set; }
     }
 }

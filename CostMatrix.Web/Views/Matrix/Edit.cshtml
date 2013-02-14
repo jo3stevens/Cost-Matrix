@@ -12,6 +12,8 @@
     {
         @Html.HiddenFor(m => m.ProjectId)
         @Html.HiddenFor(m => m.MatrixId)
+        @Html.HiddenFor(m => m.CreatedBy)
+        @Html.HiddenFor(m => m.CreatedOn)
 
         <div class="row">
             <div class="span4">
@@ -83,13 +85,16 @@
                         <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.DesignTotal)</span>
                     </td>
                     <td>
-                        <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.OtherTotal)</span>
-                    </td>
-                    <td>
                         <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.TestingTotal)</span>
                     </td>
                     <td>
                         <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.ProjectManagementTotal)</span>
+                    </td>
+                    <td>
+                        <div class="input-prepend">
+                            <span class="add-on">$</span>
+                            <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.OtherTotal)</span>
+                        </div>
                     </td>
                     <td>
                         <div class="input-prepend">
@@ -234,17 +239,6 @@
                             @Html.ValidationMessageFor(m => m.Settings.ProjectManagement, "", new { @class = "help-inline" })
                         </div>
                     </div>
-
-                    <div class="control-group">
-                        @Html.LabelFor(m => m.Settings.Other, new { @class = "control-label" })
-                        <div class="controls">
-                            <div class="input-prepend">
-                                <span class="add-on">$</span>
-                                @Html.TextBoxFor(m => m.Settings.Other)
-                            </div>
-                            @Html.ValidationMessageFor(m => m.Settings.Other, "", new { @class = "help-inline" })
-                        </div>
-                    </div>
                 </div>
                 <div class="modal-footer">
                     <a href="#" class="btn" data-dismiss="modal">Close</a>
@@ -366,6 +360,8 @@
                 handle: '.handle',
                 cursor: 'move'
             });
+
+            $(".table #item-container").sortable({ cursor: 'move' });
         })
     </script>
 }
