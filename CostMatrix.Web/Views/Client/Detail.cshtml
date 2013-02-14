@@ -50,7 +50,7 @@
                     <tr>
                         <td>
                             <a data-toggle="collapse" href="#collapse-@project.Id">
-                                @project.Name            
+                                @project.Name
                             </a>
                         </td>
                         <td>
@@ -72,12 +72,14 @@
                                     <h5>Cost Matrixes</h5>
                                     
                                     <table class="table">
-                                        <tr>
-                                            <th class="span5">Name</th>
-                                            <th class="span2">Created By</th>
-                                            <th class="span3">Created On</th>
-                                            <th class="span2"></th>
-                                        </tr>
+                                        <thead>
+                                            <tr>
+                                                <th class="span5">Name</th>
+                                                <th class="span2">Created By</th>
+                                                <th class="span3">Created On</th>
+                                                <th class="span2"></th>
+                                            </tr>
+                                        </thead>
                                         <tbody>
                                             @foreach (var matrix in project.Matrixes)
                                             {

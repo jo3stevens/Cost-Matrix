@@ -28,3 +28,7 @@ $(function () {
 $(function () {
     $("[rel='tooltip']").tooltip();
 });
+
+$(function () {
+    $(".tablesorter").tablesorter({ sortList: [[0,0]] });
+});

@@ -297,7 +297,7 @@
             });
 
             $(document).on("click", ".remove-section", function() {
-                var section = $(this).parents(".section-container");
+                var section = $(this).parents(".section");
                 $("#remove-section").click(function() {
                     section.remove();
                     $('#remove-section-modal').modal('hide');

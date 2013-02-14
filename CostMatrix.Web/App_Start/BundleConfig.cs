@@ -10,7 +10,8 @@ namespace CostMatrix.Web.App_Start
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/jquery.validate*",
-                        "~/Scripts/jquery-ui*"));
+                        "~/Scripts/jquery-ui*",
+                        "~/Scripts/jquery.tablesorter*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                         "~/Scripts/bootstrap*"));
@@ -19,7 +20,7 @@ namespace CostMatrix.Web.App_Start
                         "~/Scripts/custom*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                "~/Content/bootstrap.css", "~/Content/bootstrap-responsive.css"));
+                "~/Content/bootstrap.css", "~/Content/bootstrap-responsive.css", "~/Content/tablesorter.css"));
         }
     }
 }

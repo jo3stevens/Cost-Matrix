@@ -288,6 +288,8 @@ namespace CostMatrix.Web.Controllers
 
             viewModel.Sections.ForEach(s => viewModel.Total += s.Total);
 
+            csv.AppendLine("Client," + viewModel.ClientName);
+            csv.AppendLine("Project," + client.Projects[0].Name);
             csv.AppendLine("Created By," + viewModel.CreatedBy);
             csv.AppendLine("Created On," + viewModel.CreatedOn);
             csv.AppendLine();
@@ -299,7 +301,7 @@ namespace CostMatrix.Web.Controllers
 
                 foreach (var item in section.Items)
                 {
-                    csv.AppendLine("," + string.Format("\"{0}\"", item.Description) + "," + item.FrontEnd + "," + item.BackEnd + "," + item.Design + "," + item.ArtDirector + "," + item.ServerManagement + "," + item.Seo + "," + item.Copyrighter + "," + item.Testing + "," + item.ProjectManagement + "," + string.Format("\"{0:c2}\"", item.Other) + "," + string.Format("\"{0:c2}\"", item.Total));
+                    csv.AppendLine("," + string.Format("\"{0}{1}\"", item.Description, string.IsNullOrEmpty(item.AdditionalInformation) ? string.Empty : "\n" + item.AdditionalInformation.Replace("\r\n", "\n")) + "," + item.FrontEnd + "," + item.BackEnd + "," + item.Design + "," + item.ArtDirector + "," + item.ServerManagement + "," + item.Seo + "," + item.Copyrighter + "," + item.Testing + "," + item.ProjectManagement + "," + string.Format("\"{0:c2}\"", item.Other) + "," + string.Format("\"{0:c2}\"", item.Total));
                 }
             }
 
