@@ -129,17 +129,6 @@
                 @Html.ValidationMessageFor(m  => m.ProjectManagement, null, new { @class="help-inline" })
             </div>
         </div>
-        
-        <div class="control-group">
-            @Html.LabelFor(m => m.Other, new { @class="control-label" })
-            <div class="controls">
-                <div class="input-prepend">
-                    <span class="add-on">$</span>
-                    @Html.TextBoxFor(m => m.Other)
-                </div>
-                @Html.ValidationMessageFor(m  => m.Other, null, new { @class="help-inline" })
-            </div>
-        </div>
             
         <div class="form-actions">
             <button type="submit" class="btn btn-primary">Save Settings</button>

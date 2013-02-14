@@ -291,7 +291,7 @@ namespace CostMatrix.Web.Controllers
             csv.AppendLine("Created By," + viewModel.CreatedBy);
             csv.AppendLine("Created On," + viewModel.CreatedOn);
             csv.AppendLine();
-            csv.AppendLine(",Description,Front End,Back End,Design,Art Director,Server Management,SEO,Copyrighter,Other,Testing,Project Management,Total");
+            csv.AppendLine(",Description,Front End,Back End,Design,Art Director,Server Management,SEO,Copyrighter,Testing,Project Management,Other,Total");
 
             foreach (var section in viewModel.Sections)
             {
@@ -299,12 +299,12 @@ namespace CostMatrix.Web.Controllers
 
                 foreach (var item in section.Items)
                 {
-                    csv.AppendLine("," + string.Format("\"{0}\"", item.Description) + "," + item.FrontEnd + "," + item.BackEnd + "," + item.Design + "," + item.ArtDirector + "," + item.ServerManagement + "," + item.Seo + "," + item.Copyrighter + "," + item.Other + "," + item.Testing + "," + item.ProjectManagement + "," + string.Format("\"{0:c2}\"", item.Total));
+                    csv.AppendLine("," + string.Format("\"{0}\"", item.Description) + "," + item.FrontEnd + "," + item.BackEnd + "," + item.Design + "," + item.ArtDirector + "," + item.ServerManagement + "," + item.Seo + "," + item.Copyrighter + "," + item.Testing + "," + item.ProjectManagement + "," + string.Format("\"{0:c2}\"", item.Other) + "," + string.Format("\"{0:c2}\"", item.Total));
                 }
             }
 
             csv.AppendLine();
-            csv.AppendLine(",Total" + "," + viewModel.FrontEndTotal + "," + viewModel.BackEndTotal + "," + viewModel.DesignTotal + "," + viewModel.ArtDirectorTotal + "," + viewModel.ServerManagementTotal + "," + viewModel.SeoTotal + "," + viewModel.CopyrighterTotal + "," + viewModel.OtherTotal + "," + viewModel.TestingTotal + "," + viewModel.ProjectManagementTotal + "," + string.Format("\"{0:c2}\"", viewModel.Total));
+            csv.AppendLine(",Total" + "," + viewModel.FrontEndTotal + "," + viewModel.BackEndTotal + "," + viewModel.DesignTotal + "," + viewModel.ArtDirectorTotal + "," + viewModel.ServerManagementTotal + "," + viewModel.SeoTotal + "," + viewModel.CopyrighterTotal + "," + viewModel.TestingTotal + "," + viewModel.ProjectManagementTotal + "," + string.Format("\"{0:c2}\"", viewModel.OtherTotal) + "," + string.Format("\"{0:c2}\"", viewModel.Total));
 
             //TODO: Create a custom Action Result for CSV
             Response.AddHeader("Content-Disposition", string.Format("attachment; filename={0}-{1}.csv",  matrix.Name.Replace(" ", "-"), DateTime.Now.ToFileTime()));
