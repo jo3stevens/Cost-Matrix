@@ -162,6 +162,49 @@ namespace CostMatrix.Web.Controllers
             return View(viewModel);
         }
 
+        [HttpGet]
+        public ActionResult Delete(string id)
+        {
+            var matrix = _matrixService.GetById(id);
+            var viewModel = Mapper.Map<MatrixEditModel>(matrix);
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(MatrixEditModel viewModel)
+        {
+            var clientViewModel = Mapper.Map<ClientViewModel>(_clientService.GetByProjectId(viewModel.ProjectId));
+
+            _matrixService.Delete(viewModel.MatrixId);
+            TempData.Add("SuccessMessage", "The matrix " + viewModel.Name + " was deleted successfully");
+            return RedirectToAction("Detail", "Client", new { @id = clientViewModel.Id });
+        }
+
+        [HttpGet]
+        public ActionResult Clone(string id, string clientId)
+        {
+            var viewModel = new CloneMatrixEditModel()
+                                {
+                                    Id = id,
+                                    ClientId = clientId
+                                };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Clone(CloneMatrixEditModel viewmodel)
+        {
+            if (ModelState.IsValid)
+            {
+                _matrixService.Clone(viewmodel.Id, viewmodel.Name, User.Identity.Name, DateTime.UtcNow);
+                TempData.Add("SuccessMessage", "The matrix was cloned successfully");
+                return RedirectToAction("Detail", "Client", new { id = viewmodel.ClientId });
+            }
+
+            return View(viewmodel);
+        }
+
         [OutputCache(NoStore = true, Duration = 0, VaryByParam = "*")]
         public ActionResult GetNewSection(string sectionName)
         {
@@ -259,7 +302,7 @@ namespace CostMatrix.Web.Controllers
             csv.AppendLine(",Total" + "," + viewModel.FrontEndTotal + "," + viewModel.BackEndTotal + "," + viewModel.DesignTotal + "," + viewModel.ArtDirectorTotal + "," + viewModel.ServerManagementTotal + "," + viewModel.SeoTotal + "," + viewModel.CopyrighterTotal + "," + viewModel.OtherTotal + "," + viewModel.TestingTotal + "," + viewModel.ProjectManagementTotal + "," + string.Format("\"{0:c2}\"", viewModel.Total));
 
             //TODO: Create a custom Action Result for CSV
-            Response.AddHeader("Content-Disposition", string.Format("attachment; filename={0}-{1}",  matrix.Name.Replace(" ", "-"), DateTime.Now.ToFileTime()));
+            Response.AddHeader("Content-Disposition", string.Format("attachment; filename={0}-{1}.csv",  matrix.Name.Replace(" ", "-"), DateTime.Now.ToFileTime()));
             return new ContentResult() {Content = csv.ToString(), ContentType = "text/csv"};
         }
     }

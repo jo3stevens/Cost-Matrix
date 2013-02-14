@@ -1,0 +1,32 @@
+﻿@using CostMatrix.Web.Extensions
+@model CostMatrix.Web.Models.MatrixEditModel
+
+@{
+    ViewBag.Title = "Delete Matrix";
+}
+
+<div class="span3">
+    <div class="well">
+        <ul class="nav nav-list">
+            <li class="nav-header">Actions</li>
+            @Html.MenuLink("List Clients", "Index", "Client")
+            @Html.MenuLink("Add Client", "Add", "Client")
+        </ul>
+    </div><!--/.well -->
+</div><!--/span-->
+
+
+<div class="span9">
+    <h3>Delete Matrix</h3>
+    <p>Are you sure you want to delete: <strong>@Model.Name</strong></p>
+    @using (Html.BeginForm(null, null, FormMethod.Post))
+    {           
+        @Html.HiddenFor(m => m.MatrixId)
+        @Html.HiddenFor(m => m.Name)
+        @Html.HiddenFor(m => m.ProjectId)
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Delete Matrix</button>
+            @Html.ActionLink("Cancel", "Index", "Client", null, new { @class = "btn" })
+        </div>
+    }
+</div><!--/span-->

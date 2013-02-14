@@ -32,7 +32,7 @@
         <table class="table table-striped table-bordered table-hover">
             <thead>
                 <tr>
-                    <th>
+                    <th class="span5">
                         Name
                     </th>
                     <th class="span2">
@@ -59,7 +59,7 @@
                         <td>
                             @project.CreatedOn
                         </td>
-                        <td class="span2">
+                        <td>
                             <a title="New Matrix" href="@Url.Action("Add", "Matrix", new { id = project.Id })"><i class="icon-pencil"></i></a>
                             <a title="Edit" href="@Url.Action("EditProject", "Client", new { id = project.Id })"><i class="icon-edit"></i></a>
                             <a title="Delete" href="@Url.Action("DeleteProject", "Client", new { id = project.Id })"><i class="icon-remove"></i></a>
@@ -73,10 +73,10 @@
                                     
                                     <table class="table">
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Created By</th>
-                                            <th>Created On</th>
-                                            <th></th>
+                                            <th class="span5">Name</th>
+                                            <th class="span2">Created By</th>
+                                            <th class="span3">Created On</th>
+                                            <th class="span2"></th>
                                         </tr>
                                         <tbody>
                                             @foreach (var matrix in project.Matrixes)
@@ -93,7 +93,9 @@
                                                     </td>
                                                     <td>
                                                         <a title="Edit" href="@Url.Action("Edit", "Matrix", new { id = matrix.Id })"><i class="icon-edit"></i></a>
-                                                        <a title="Export CSV" href="@Url.Action("Csv", "Matrix", new { id = matrix.Id })"><i class="icon-file"></i></a>    
+                                                        <a title="Export CSV" href="@Url.Action("Csv", "Matrix", new { id = matrix.Id })"><i class="icon-file"></i></a>
+                                                        <a title="Clone" href="@Url.Action("Clone", "Matrix", new { id = matrix.Id, clientId = Model.Id })"><i class="icon-plus-sign"></i></a>
+                                                        <a title="Delete" href="@Url.Action("Delete", "Matrix", new { id = matrix.Id })"><i class="icon-remove"></i></a>
                                                     </td>
                                                 </tr>
                                             }

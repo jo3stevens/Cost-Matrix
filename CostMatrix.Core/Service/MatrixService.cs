@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using CostMatrix.Core.Domain;
 using CostMatrix.Core.Helpers;
 using MongoDB.Driver.Builders;
@@ -26,6 +27,11 @@ namespace CostMatrix.Core.Service
             _db.Collection.Save(matrix);
         }
 
+        public void Delete(string id)
+        {
+            _db.Collection.Remove(Query.EQ("_id", ObjectId.Parse(id)));
+        }
+
         public void DeleteByProjectId(string id)
         {
             _db.Collection.Remove(Query.EQ("ProjectId", ObjectId.Parse(id)));
@@ -39,6 +45,17 @@ namespace CostMatrix.Core.Service
         public Matrix GetById(string id)
         {
             return _db.Collection.FindOneById(ObjectId.Parse(id));
+        }
+
+        public void Clone(string id, string name, string createdBy, DateTime createdOn)
+        {
+            var matrix = GetById(id);
+            matrix.Id = ObjectId.GenerateNewId();
+            matrix.Name = name;
+            matrix.CreatedBy = createdBy;
+            matrix.CreatedOn = createdOn;
+
+            _db.Collection.Insert(matrix);
         }
     }
 }

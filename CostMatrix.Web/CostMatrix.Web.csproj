@@ -137,6 +137,7 @@
     </Compile>
     <Compile Include="Models\ClientViewModel.cs" />
     <Compile Include="Models\ClientEditModel.cs" />
+    <Compile Include="Models\CloneMatrixEditModel.cs" />
     <Compile Include="Models\MatrixEditModel.cs" />
     <Compile Include="Models\MatrixViewModel.cs" />
     <Compile Include="Models\ProjectEditModel.cs" />
@@ -194,6 +195,8 @@
     <Content Include="Views\Matrix\EditorTemplates\MatrixSectionItem.cshtml" />
     <Content Include="Views\Matrix\EditorTemplates\MatrixSection.cshtml" />
     <Content Include="Views\Matrix\Edit.cshtml" />
+    <Content Include="Views\Matrix\Clone.cshtml" />
+    <Content Include="Views\Matrix\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -229,7 +232,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>9676</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:14713/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
