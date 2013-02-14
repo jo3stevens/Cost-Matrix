@@ -60,9 +60,9 @@
                             @project.CreatedOn
                         </td>
                         <td>
-                            <a title="New Matrix" href="@Url.Action("Add", "Matrix", new { id = project.Id })"><i class="icon-pencil"></i></a>
-                            <a title="Edit" href="@Url.Action("EditProject", "Client", new { id = project.Id })"><i class="icon-edit"></i></a>
-                            <a title="Delete" href="@Url.Action("DeleteProject", "Client", new { id = project.Id })"><i class="icon-remove"></i></a>
+                            <a title="New Matrix" rel="tooltip" href="@Url.Action("Add", "Matrix", new { id = project.Id })"><i class="icon-pencil"></i></a>
+                            <a title="Edit" rel="tooltip" href="@Url.Action("EditProject", "Client", new { id = project.Id })"><i class="icon-edit"></i></a>
+                            <a title="Delete" rel="tooltip" href="@Url.Action("DeleteProject", "Client", new { id = project.Id })"><i class="icon-remove"></i></a>
                         </td>
                     </tr>    
                     <tr>
@@ -92,10 +92,10 @@
                                                         @Html.DisplayFor(m => matrix.CreatedOn)
                                                     </td>
                                                     <td>
-                                                        <a title="Edit" href="@Url.Action("Edit", "Matrix", new { id = matrix.Id })"><i class="icon-edit"></i></a>
-                                                        <a title="Export CSV" href="@Url.Action("Csv", "Matrix", new { id = matrix.Id })"><i class="icon-file"></i></a>
-                                                        <a title="Clone" href="@Url.Action("Clone", "Matrix", new { id = matrix.Id, clientId = Model.Id })"><i class="icon-plus-sign"></i></a>
-                                                        <a title="Delete" href="@Url.Action("Delete", "Matrix", new { id = matrix.Id })"><i class="icon-remove"></i></a>
+                                                        <a title="Edit" rel="tooltip" href="@Url.Action("Edit", "Matrix", new { id = matrix.Id })"><i class="icon-edit"></i></a>
+                                                        <a title="Export CSV" rel="tooltip" href="@Url.Action("Csv", "Matrix", new { id = matrix.Id })"><i class="icon-file"></i></a>
+                                                        <a title="Clone" rel="tooltip" href="@Url.Action("Clone", "Matrix", new { id = matrix.Id, clientId = Model.Id })"><i class="icon-plus-sign"></i></a>
+                                                        <a title="Delete" rel="tooltip" href="@Url.Action("Delete", "Matrix", new { id = matrix.Id })"><i class="icon-remove"></i></a>
                                                     </td>
                                                 </tr>
                                             }

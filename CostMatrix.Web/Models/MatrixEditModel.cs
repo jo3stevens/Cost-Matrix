@@ -67,6 +67,8 @@ namespace CostMatrix.Web.Models
 
         [Required]
         public string Description { get; set; }
+
+        public string AdditionalInformation { get; set; }
     
         [Display(Name = "Front End")]
         [RegularExpression(@"^\d+(\.\d{1,2})?$", ErrorMessage = "The {0} field is invalid.")]

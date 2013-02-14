@@ -22,6 +22,7 @@ namespace CostMatrix.Core.Domain
             public class Item
             {
                 public string Description { get; set; }
+                public string AdditionalInformation { get; set; }
                 public decimal FrontEnd { get; set; }
                 public decimal BackEnd { get; set; }
                 public decimal Design { get; set; }

@@ -24,3 +24,7 @@ $(function() {
 $(function () {
     $("input[type=text]").first().focus();
 });
+
+$(function () {
+    $("[rel='tooltip']").tooltip();
+});

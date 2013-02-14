@@ -51,9 +51,9 @@
                             @client.CreatedOn
                         </td>
                         <td>
-                            <a title="Detail" href="@Url.Action("Detail", "Client", new { id = client.Id })"><i class="icon-eye-open"></i></a>
-                            <a title="Edit" href="@Url.Action("Edit", "Client", new { id = client.Id })"><i class="icon-edit"></i></a>
-                            <a title="Delete" href="@Url.Action("Delete", "Client", new { id = client.Id })"><i class="icon-remove"></i></a>
+                            <a title="Detail" rel="tooltip" href="@Url.Action("Detail", "Client", new { id = client.Id })"><i class="icon-eye-open"></i></a>
+                            <a title="Edit" rel="tooltip" href="@Url.Action("Edit", "Client", new { id = client.Id })"><i class="icon-edit"></i></a>
+                            <a title="Delete" rel="tooltip" href="@Url.Action("Delete", "Client", new { id = client.Id })"><i class="icon-remove"></i></a>
                         </td>
                     </tr>    
                 }

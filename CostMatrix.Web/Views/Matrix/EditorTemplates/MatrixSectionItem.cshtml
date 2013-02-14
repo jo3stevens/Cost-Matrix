@@ -4,52 +4,68 @@
 <tr>
     @using (Html.BeginCollectionItem("Items", "<td style='display:none'>{0}</td>"))
     {
-    <td>
-        <div class="control-group" style="margin: 0;">
-            @Html.TextBoxFor(m => m.Description, new { @class = "input-large" })
-        </div>
-    </td>
-    <td>
-        <div class="control-group" style="margin: 0;">
-            @Html.TextBoxFor(m => m.FrontEnd, new { @class = "input-mini" })
-        </div>
-    </td>
-    <td>
-        <div class="control-group" style="margin: 0;">
-            @Html.TextBoxFor(m => m.BackEnd, new { @class = "input-mini" })
-        </div>
-    </td>
-    <td>
-        <div class="control-group" style="margin: 0;">
-            @Html.TextBoxFor(m => m.Design, new { @class = "input-mini" })
-        </div>
-    </td>
-    <td>
-        <div class="control-group" style="margin: 0;">
-            <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.Testing)</span>
-        </div>
-    </td>
-    <td>
-        <div class="control-group" style="margin: 0;">
-            <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.ProjectManagement)</span>
-        </div>
-    </td>
-    <td>
-        <div class="control-group" style="margin: 0;">
-            <div class="input-prepend">
-                <span class="add-on">$</span>
-                @Html.TextBoxFor(m => m.Other, new { @class = "input-mini" })
+        <td>
+            <div class="control-group" style="margin: 0;">
+                @Html.TextBoxFor(m => m.Description, new { @class = "input-large" })
+                <a title="Add Additional Information" rel="tooltip" href="#additional-modal-@Model.UniqueId" data-toggle="modal"><i class="icon-chevron-right"></i></a>
+            
+                <div id="additional-modal-@Model.UniqueId" class="modal hide fade">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h3>Additional Information</h3>
+                    </div>
+                    <div class="modal-body form-horizontal">        
+                        <div class="control-group">
+                            @Html.TextAreaFor(m => m.AdditionalInformation, new { @class="input-xxlarge", rows = 8 })
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#" class="btn" data-dismiss="modal">Close</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </td>
-    <td>
-        <div class="control-group" style="margin: 0;">
-            <div class="input-prepend">
-                <span class="add-on">$</span>
-                <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.Total)</span>
+        </td>
+        <td>
+            <div class="control-group" style="margin: 0;">
+                @Html.TextBoxFor(m => m.FrontEnd, new { @class = "input-mini" })
             </div>
-        </div>
-    </td>
+        </td>
+        <td>
+            <div class="control-group" style="margin: 0;">
+                @Html.TextBoxFor(m => m.BackEnd, new { @class = "input-mini" })
+            </div>
+        </td>
+        <td>
+            <div class="control-group" style="margin: 0;">
+                @Html.TextBoxFor(m => m.Design, new { @class = "input-mini" })
+            </div>
+        </td>
+        <td>
+            <div class="control-group" style="margin: 0;">
+                <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.Testing)</span>
+            </div>
+        </td>
+        <td>
+            <div class="control-group" style="margin: 0;">
+                <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.ProjectManagement)</span>
+            </div>
+        </td>
+        <td>
+            <div class="control-group" style="margin: 0;">
+                <div class="input-prepend">
+                    <span class="add-on">$</span>
+                    @Html.TextBoxFor(m => m.Other, new { @class = "input-mini" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="control-group" style="margin: 0;">
+                <div class="input-prepend">
+                    <span class="add-on">$</span>
+                    <span class="uneditable-input input-mini">@Html.DisplayFor(m => m.Total)</span>
+                </div>
+            </div>
+        </td>
         <td>
             <a href="#more-modal-@Model.UniqueId" data-toggle="modal" class="btn @(Model.HasMore ? "btn-success" : string.Empty )">More</a>
             <a title="Remove" class="remove-item" href="javascript:void()" ><i class="icon-remove"></i></a>
