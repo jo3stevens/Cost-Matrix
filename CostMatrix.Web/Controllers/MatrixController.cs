@@ -12,15 +12,15 @@ namespace CostMatrix.Web.Controllers
 {
     public class MatrixController : Controller
     {
-        private readonly SettingService _settingService;
-        private readonly ClientService _clientService;
-        private readonly MatrixService _matrixService;
+        private readonly ISettingService _settingService;
+        private readonly IClientService _clientService;
+        private readonly IMatrixService _matrixService;
 
-        public MatrixController()
+        public MatrixController(ISettingService settingService, IClientService clientService, IMatrixService matrixService)
         {
-            _settingService = new SettingService();
-            _clientService = new ClientService();
-            _matrixService = new MatrixService();
+            _settingService = settingService;
+            _clientService = clientService;
+            _matrixService = matrixService;
         }
 
         [HttpGet]

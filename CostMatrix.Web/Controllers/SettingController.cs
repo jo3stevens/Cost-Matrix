@@ -8,11 +8,11 @@ namespace CostMatrix.Web.Controllers
 {
     public class SettingController : Controller
     {
-        private readonly SettingService _settingService;
+        private readonly ISettingService _settingService;
 
-        public SettingController()
+        public SettingController(ISettingService settingService)
         {
-            _settingService = new SettingService();
+            _settingService =settingService;
         }
 
         [HttpGet]

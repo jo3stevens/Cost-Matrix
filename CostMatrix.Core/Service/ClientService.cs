@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace CostMatrix.Core.Service
 {
-    public class ClientService
+    public class ClientService : IClientService
     {
         private readonly MongoHelper<Client> _db;
 

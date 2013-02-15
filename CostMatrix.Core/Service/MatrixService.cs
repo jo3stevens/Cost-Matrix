@@ -7,7 +7,7 @@ using MongoDB.Bson;
 
 namespace CostMatrix.Core.Service
 {
-    public class MatrixService
+    public class MatrixService : IMatrixService
     {
         private readonly MongoHelper<Matrix> _db;
 

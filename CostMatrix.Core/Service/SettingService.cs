@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace CostMatrix.Core.Service
 {
-    public class SettingService
+    public class SettingService : ISettingService
     {
         private readonly MongoHelper<Setting> _db;
 

@@ -9,13 +9,13 @@ namespace CostMatrix.Web.Controllers
 {
     public class ClientController : Controller
     {
-        private readonly ClientService _clientService;
-        private readonly MatrixService _matrixService;
+        private readonly IClientService _clientService;
+        private readonly IMatrixService _matrixService;
         
-        public ClientController()
+        public ClientController(IClientService clientService, IMatrixService matrixService)
         {
-            _clientService = new ClientService();
-            _matrixService = new MatrixService();
+            _clientService = clientService;
+            _matrixService = matrixService;
         }
 
         [HttpGet]
